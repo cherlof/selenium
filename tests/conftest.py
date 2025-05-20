@@ -19,22 +19,22 @@ def driver(request):
 
     if browser_name == "chrome":
         options = webdriver.ChromeOptions()
-        options.add_argument("--headless")  # Фоновый режим
-        options.add_argument("--no-sandbox")  # Отключает sandbox (важно для CI/CD)
-        options.add_argument("--disable-dev-shm-usage")  # Исправляет ошибки shared memory
-        options.add_argument("--disable-gpu")  # Отключает GPU
-        options.add_argument("--remote-debugging-port=9222")  # Устраняет сбои DevTools
+        options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--disable-gpu")
+        options.add_argument("--remote-debugging-port=9222")
         _driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
     elif browser_name == "firefox":
         options = webdriver.FirefoxOptions()
         options.add_argument("--headless")
-        _driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
+        _driver = webdriver.Firefox(options=options)
 
     elif browser_name == "edge":
         options = webdriver.EdgeOptions()
         options.add_argument("--headless")
-        _driver = webdriver.Edge(executable_path=EdgeChromiumDriverManager().install())
+        _driver = webdriver.Edge(options=options)
 
     else:
         raise ValueError(f"Браузер {browser_name} не поддерживается")
