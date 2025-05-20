@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 @pytest.mark.parametrize("currency, symbol",[(1,'€'),(2,'£'),(3,'$')])
 def test_change_currency_to_dollar(driver,currency,symbol):
-    driver.get(url="http://127.0.0.1/8081")
+    driver.get(url="http://192.168.3.28:8081/")
     element = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.XPATH, "//*[@id=\"form-currency\"]/div/a"))
     )
