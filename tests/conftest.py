@@ -19,7 +19,7 @@ def driver(request):
         options.add_argument("--headless")  # Фоновый режим
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
-        _driver = webdriver.Chrome(executable_path="/usr/local/bin/chromedriver")
+        _driver = webdriver.Chrome()
     elif browser_name == "firefox":
         options = webdriver.FirefoxOptions()
         options.add_experimental_option("detach", True)
