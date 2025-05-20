@@ -15,6 +15,7 @@ def driver(request):
     browser_name = request.config.getoption("--browser")
 
     if browser_name == "chrome":
+        service = webdriver.ChromeService(executable_path="/usr/local/bin/chromedriver")
         options = webdriver.ChromeOptions()
         options.add_argument("--headless")
         options.add_argument("--no-sandbox")
