@@ -16,6 +16,8 @@ def driver(request):
     browser_name = request.config.getoption("--browser")
     if browser_name == "chrome":
         options = webdriver.ChromeOptions()
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--no-sandbox")
         options.add_experimental_option("detach", True)
         _driver = webdriver.Chrome()
     elif browser_name == "firefox":
